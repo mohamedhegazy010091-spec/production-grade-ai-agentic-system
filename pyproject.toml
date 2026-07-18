@@ -27,6 +27,61 @@ dependencies = [
 
 ]
 
+# ==========================================
+# Optional Dependencies
+# ==========================================
+# Extra dependency sets that can be installed with:
+#   pip install .[dev]
+
+[project.optional-dependencies]
+dev = [
+    "black>=26.5.1",                  # Code formatter
+    "isort>=8.0.1",                   # Import sorter
+    "pylint>=4.0.6",                  # Code linter
+]
+
+# ==========================================
+# Black (Code Formatter)
+# ==========================================
+[tool.black]
+line-length = 119                             # Maximum line length
+extend-exclude = "src/data/alembic"           # Exclude Alembic migration scripts from formatting
+
+# ==========================================
+# isort (Import Sorting)
+# ==========================================
+[tool.isort]
+profile = "black"                             # Use Black-compatible import formatting rules
+line_length = 119                             # Maximum line length before wrapping imports
+skip_gitignore = true                         # Automatically ignore all files/directories listed in .gitignore
+skip = [
+    "src/data/alembic",                       # Skip auto-formatting on Alembic migration scripts
+]
+
+# ==========================================
+# Pylint Configuration
+# ==========================================
+[tool.pylint.format]
+max-line-length = 119                         # Maximum allowed line length
+
+[tool.pylint.messages_control]
+disable = [
+    "consider-using-f-string",
+    "too-few-public-methods",
+    "redefined-outer-name",
+    "unused-argument",
+]
+
+[tool.pylint.main]
+ignore = [
+    "venv",
+    "migrations",
+    "__pycache__",
+]
+ignore-paths = [
+    "src/data/alembic/.*$",                    # Ignore all files in the Alembic directory
+]
+
 [project.urls]
 Repository = "https://github.com/mohamedhegazy010091-spec/production-grade-ai-agentic-system"
 
