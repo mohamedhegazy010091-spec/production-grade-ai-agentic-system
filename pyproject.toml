@@ -18,6 +18,13 @@ dependencies = [
     "pydantic-settings>=2.14.2",
     "python-dotenv>=1.2.2",
     "structlog>=26.1.0",
+
+    # Database and Persistence
+    "sqlalchemy>=2.0.51",
+    "psycopg>=3.3.4",
+    "alembic>=1.13.4",
+    "asyncpg>=0.31.0",
+
 ]
 
 [project.urls]
